@@ -1,37 +1,74 @@
+/// @file carre.h
+/// @brief Modifier ou Afficher les valeurs d'un carré définis
+/// @details On peut définir les cotés du carré, les afficher ou encore les déplacer
+/// @author Maxime Bonnevay
+/// @version 0.1 - Visual Studio 2019
+/// @date 29/12/2024
+
 #pragma once
 
 #include <iostream>
 
+using namespace std;
+
 class CCarre {
 private:
-    int sx;  // Coordonnée x du sommet supérieur gauche
-    int sy;  // Coordonnée y du sommet supérieur gauche
-    int cote; // Longueur du côté du carré
+	/// @brief Coordonnée x du sommet supérieur gauche.
+	int sx;
+
+	/// @brief Coordonnée y du sommet supérieur gauche.
+	int sy;
+
+	/// @brief Longueur du côté du carré.
+	int cote;
 
 public:
-    // Constructeurs
-    CCarre(); // Constructeur par défaut
-    CCarre(int sx1, int sy1, int cote1); // Constructeur paramétré
+	/// @brief Constructeur par défaut.
+	CCarre();
 
-    // Méthodes pour modifier les valeurs des attributs
-    void Setsx(int sx1); // Définir la val x
-    void Setsy(int sy1); // Définir la val y
-    void Setcote(int cote1); // Définir cote
+	/// @brief Constructeur paramétré.
+	/// @param[in] sx1 Coordonnée x du sommet supérieur gauche.
+	/// @param[in] sy1 Coordonnée y du sommet supérieur gauche.
+	/// @param[in] cote1 Longueur du côté du carré.
+	CCarre(int sx1, int sy1, int cote1);
 
-    // Méthode pour afficher les caractéristiques du carré
-    void Afficher();
+	/// @brief Définit la coordonnée x du sommet supérieur gauche.
+	/// @param[in] sx1 Nouvelle valeur de la coordonnée x.
+	void Setsx(int sx1);
 
-    // Méthodes pour récupérer les valeurs des attributs
-    int Getsx();
-    int Getsy();
-    int GetCote();
+	/// @brief Définit la coordonnée y du sommet supérieur gauche.
+	/// @param[in] sy1 Nouvelle valeur de la coordonnée y.
+	void Setsy(int sy1);
 
-    // Méthode pour déplacer le carré avec une direction et un saut
-    void Deplacer(char direction, int saut);
+	/// @brief Définit la longueur du côté du carré.
+	/// @param[in] cote1 Nouvelle longueur du côté.
+	void Setcote(int cote1);
 
-    // Surcharge : déplacer le carré avec un vecteur dx, dy
-    void Deplacer(int dx, int dy);
+	/// @brief Affiche les caractéristiques du carré.
+	void Afficher();
 
-    // Surcharge de l'opérateur << pour afficher un carré
-    friend std::ostream& operator<<(std::ostream& os, const CCarre& carre);
+	/// @brief Récupère la coordonnée x du sommet supérieur gauche.
+	/// @param[out] Retourne la coordonnée x actuelle.
+	int Getsx();
+
+	/// @brief Récupère la coordonnée y du sommet supérieur gauche.
+	/// @param[out] Retourne la coordonnée y actuelle.
+	int Getsy();
+
+	/// @brief Récupère la longueur du côté du carré.
+	/// @param[out] Retourne la longueur actuelle du côté.
+	int GetCote();
+
+	/// @brief Déplace le carré dans une direction donnée avec un saut.
+	/// @param[in] direction Direction du déplacement ('N', 'S', 'E', 'O').
+	/// @param[in] saut Distance du déplacement.
+	void Deplacer(char direction, int saut);
+
+	/// @brief Déplace le carré en utilisant un vecteur.
+	/// @param[in] dx Déplacement sur l'axe x.
+	/// @param[in] dy Déplacement sur l'axe y.
+	void Deplacer(int dx, int dy);
+
+	/// Surcharge de l'opérateur << pour afficher un carré
+	friend ostream& operator<<(ostream& os, const CCarre& carre);
 };
